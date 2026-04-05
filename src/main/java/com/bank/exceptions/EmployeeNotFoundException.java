@@ -1,0 +1,7 @@
+package com.bank.exceptions;
+
+public class EmployeeNotFoundException extends RuntimeException{
+    public EmployeeNotFoundException(String message) {
+        super(message);
+    }
+}
