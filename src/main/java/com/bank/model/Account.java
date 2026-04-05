@@ -137,4 +137,9 @@ public abstract class Account {
     public void changeAccountStatus(AccountStatus status) {
         setStatus(status);
     }
+
+    public void closeAccount() {
+        setStatus(AccountStatus.CLOSED);
+        setClosureDate();
+    }
 }
