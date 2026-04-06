@@ -1,7 +1,7 @@
 package com.bank.model;
 
 public class Bank {
-        private String bankId;
+        private String bankId = "B-000001";
         private String name;
         private String address;
         private String phone;
