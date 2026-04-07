@@ -39,10 +39,6 @@ public abstract class Employee extends Person{
         this.position = position;
     }
 
-    public void setHireDate(String hireDate) {
-        this.hireDate = hireDate;
-    }
-
     public String getHireDate() {
         return hireDate;
     }
@@ -53,9 +49,6 @@ public abstract class Employee extends Person{
 
     public void setEndDate() {
         this.endDate = LocalDate.now().toString();
-    }
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
     }
 
     public boolean hasBenefits() {

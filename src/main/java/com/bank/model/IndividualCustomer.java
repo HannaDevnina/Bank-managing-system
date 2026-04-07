@@ -16,7 +16,7 @@ public class IndividualCustomer extends Customer{
         setMaritalStatus(maritalStatus);
     }
 
-    public String getSsn() {
+    public String getSSN() {
         return ssn;
     }
 

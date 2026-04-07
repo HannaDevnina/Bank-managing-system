@@ -29,13 +29,6 @@ public abstract class Customer extends Person {
         this.customerId = customerId;
     }
 
-    public void setRegistrationDate(String registrationDate) {
-        this.registrationDate = registrationDate;
-    }
-
-    public void setClosureDate(String closureDate) {
-        this.closureDate = closureDate;
-    }
     public String getRegistrationDate() {
         return registrationDate;
     }
