@@ -24,6 +24,14 @@ public abstract class Employee extends Person{
         return employeeId;
     }
 
+    public void setHireDate(String hireDate) {
+        this.hireDate = hireDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
     public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }

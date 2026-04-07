@@ -12,6 +12,10 @@ public class Transaction {
     private TransactionType type; //
     private String accountId; //
 
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
+
     public Transaction(String transactionId,
                        double amount,
                        double balanceAfter,
@@ -23,6 +27,20 @@ public class Transaction {
         this.dateTime = String.valueOf(LocalDateTime.now());
         this.type = type;
         this.accountId = accountId;
+    }
+
+    public Transaction(String transactionId,
+                       double amount,
+                       double balanceAfter,
+                       TransactionType type,
+                       String accountId,
+                       String dateTime) {
+        this.transactionId = transactionId;
+        this.amount        = amount;
+        this.balanceAfter  = balanceAfter;
+        this.dateTime      = dateTime;
+        this.type          = type;
+        this.accountId     = accountId;
     }
 
     public String getTransactionId() {
