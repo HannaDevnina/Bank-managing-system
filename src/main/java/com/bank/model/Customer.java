@@ -11,7 +11,6 @@ public abstract class Customer extends Person {
     private String registrationDate;
     private String closureDate;
     private List<Account> accounts = new ArrayList<>();
-//    private CustomerStatus status; implement in next version
 
 
     protected Customer(String firstName, String lastName, String birthDate,
@@ -19,6 +18,14 @@ public abstract class Customer extends Person {
         super(firstName, lastName, birthDate, email, phone);
         this.customerId = customerId;
         this.registrationDate = LocalDate.now().toString();
+    }
+
+    public void setRegistrationDate(String registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public void setClosureDate(String closureDate) {
+        this.closureDate = closureDate;
     }
 
     public String getCustomerId() {

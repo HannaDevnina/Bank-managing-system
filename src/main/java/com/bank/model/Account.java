@@ -3,8 +3,6 @@ package com.bank.model;
 import com.bank.enums.AccountStatus;
 import com.bank.exceptions.AccountClosedException;
 import com.bank.enums.TransactionType;
-import com.bank.exceptions.InsufficientFundsException;
-import com.bank.exceptions.TransactionLimitExceededException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,6 +16,14 @@ public abstract class Account {
     private AccountStatus status = AccountStatus.ACTIVE;
     private List<Transaction> transactions = new ArrayList<>();
     private double transactionLimit;
+
+    public void setOpenDate(String openDate) {
+        this.openDate = openDate;
+    }
+
+    public void setClosureDate(String closureDate) {
+        this.closureDate = closureDate;
+    }
 
     protected Account(String accountId, double balance, double transactionLimit) {
         this.accountId = accountId; // then need to use Generator ID
