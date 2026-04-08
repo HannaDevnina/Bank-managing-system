@@ -106,28 +106,28 @@ public abstract class Account {
 
     public abstract double getAvailableBalance();
 
-    public abstract void withdraw(double amount);
+    public abstract void withdraw(String transactionId, double amount);
 
-    public abstract void transfer(Account destination, double amount);
+    public abstract void transfer(String transactionId, Account destination, double amount);
 
     public void addTransaction(Transaction transaction) {
         transactions.add(transaction);
     }
 
-    public void deposit(double amount) {
+    public void deposit(String transactionId, double amount) {
         if (amount <= 0) {
             throw new IllegalArgumentException("Amount for deposit should be positive number!");
         }
         if (status != AccountStatus.ACTIVE) {
             throw new AccountClosedException("Account is not active!");
         }
-        if (amount > transactionLimit) {
-            throw new IllegalArgumentException("Amount exceeds transaction limit!");
-        }
+//        if (amount > transactionLimit) {
+//            throw new IllegalArgumentException("Amount exceeds transaction limit! Transaction limit is " + transactionLimit);
+//        } // it's not logically restrict how much I want to put money
         balance += amount;
 
         Transaction transaction = new Transaction(
-                "TRX - TEMP",
+                transactionId,
                 amount,
                 balance,
                 TransactionType.DEPOSIT,

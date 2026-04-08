@@ -50,7 +50,7 @@ public class BusinessCustomer extends Customer {
             throw new IllegalArgumentException(
                     "Invalid Tax ID format! Use: XX-XXXXXXX");
         }
-        this.taxId = taxId.replace("-", ""); // store clean
+        this.taxId = taxId;
     }
 
     public BusinessType getBusinessType() {

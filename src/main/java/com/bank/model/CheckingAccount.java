@@ -61,7 +61,7 @@ public class CheckingAccount extends Account {
     }
 
     @Override
-    public void withdraw(double amount) {
+    public void withdraw(String transactionId, double amount) {
         if (getStatus() != AccountStatus.ACTIVE) {
             throw new AccountClosedException("Account is not active!");
         }
@@ -70,7 +70,7 @@ public class CheckingAccount extends Account {
         }
 
         if (amount > getTransactionLimit()) {
-            throw new IllegalArgumentException("Amount exceeds transaction limit!");
+            throw new IllegalArgumentException("Amount exceeds transaction limit! Transaction limit is " + getTransactionLimit());
         }
 
         if (getBalance() + overdraftLimit < amount) {
@@ -80,7 +80,7 @@ public class CheckingAccount extends Account {
         setBalance(getBalance() - amount);
 
         Transaction transaction = new Transaction(
-                "TRX - TEMP",
+                transactionId,
                 amount,
                 getBalance(),
                 TransactionType.WITHDRAWAL,
@@ -91,7 +91,7 @@ public class CheckingAccount extends Account {
     }
 
     @Override
-    public void transfer(Account destination, double amount) {
+    public void transfer(String transactionId, Account destination, double amount) {
         if (getStatus() != AccountStatus.ACTIVE) {
             throw new AccountClosedException("Account is not active!");
         }
@@ -105,7 +105,7 @@ public class CheckingAccount extends Account {
         }
 
         if (amount > getTransactionLimit()) {
-            throw new TransactionLimitExceededException("You exceeded transaction limit!");
+            throw new TransactionLimitExceededException("Amount exceeds transaction limit! Transaction limit is " + getTransactionLimit());
         }
 
         if (getBalance() + overdraftLimit < amount) {
@@ -116,7 +116,7 @@ public class CheckingAccount extends Account {
         destination.setBalance(destination.getBalance() + amount);
 
         Transaction transaction = new Transaction(
-                "TRX - TEMP",
+                transactionId,
                 amount,
                 getBalance(),
                 TransactionType.TRANSFER,
@@ -125,10 +125,10 @@ public class CheckingAccount extends Account {
         addTransaction(transaction);
 
         destination.addTransaction(new Transaction(
-                "TRX-TEMP",
+                transactionId,
                 amount,
                 destination.getBalance(),
-                TransactionType.TRANSFER,
+                TransactionType.DEPOSIT, //I don't know since money put on the account
                 destination.getAccountId()
         ));
     }
