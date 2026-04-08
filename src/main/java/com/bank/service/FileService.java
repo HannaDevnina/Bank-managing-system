@@ -313,31 +313,31 @@ public class FileService {
         }
     }
 
-//    public void loadAll(
-//            BankService bankService,
-//            EmployeeService employeeService,
-//            CustomerService customerService) {
-//
-//
-//        Bank bank = readBank();
-//        if (bank != null) {
-//            bankService.setBank(bank);
-//        }
-//
-//
-//        List<Employee> employees = readEmployees();
-//        employeeService.setEmployees(employees);
-//
-//
-//        List<Customer> customers = readCustomers();
-//        customerService.setCustomers(customers);
-//
-//
-//        readAccounts(customers);
-//
-//
-//        readTransactions(customers);
-//    }
+    public void loadAll(
+            BankService bankService,
+            EmployeeService employeeService,
+            CustomerService customerService) {
+
+
+        Bank bank = readBank();
+        if (bank != null) {
+            bankService.setBank(bank);
+        }
+
+
+        List<Employee> employees = readEmployees();
+        employeeService.setEmployees(employees);
+
+
+        List<Customer> customers = readCustomers();
+        customerService.setCustomers(customers);
+
+
+        readAccounts(customers);
+
+
+        readTransactions(customers);
+    }
 }
 
 
