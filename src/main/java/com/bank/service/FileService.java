@@ -12,7 +12,6 @@ import com.bank.model.BusinessCustomer;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Spliterator;
 
 public class FileService {
     private static final String BANK_FILE = "bank.txt";
@@ -219,6 +218,7 @@ public class FileService {
                     if (!parts[8].equals("null")) {
                         individualCustomer.setClosureDate(parts[8]);
                     }
+                    individualCustomer.setActive(Boolean.parseBoolean(parts[9]));
                     customers.add(individualCustomer);
                 } else if (parts[0].equals("BusinessCustomer")) {
                     BusinessCustomer businessCustomer = new BusinessCustomer(
@@ -230,6 +230,7 @@ public class FileService {
                     if (!parts[8].equals("null")) {
                         businessCustomer.setClosureDate(parts[8]);
                     }
+                    businessCustomer.setActive(Boolean.parseBoolean(parts[9]));
                     customers.add(businessCustomer);
                 }
             }
