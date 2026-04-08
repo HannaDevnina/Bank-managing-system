@@ -265,15 +265,17 @@ public class CustomerService {
     }
 
     public void executeDeposit(String accountId, double amount ) {
+        String transactionId = idService.generateTransactionId();
         Account account = findAccountByAccountId(accountId);
-        account.deposit(amount);
+        account.deposit(transactionId, amount);
         fileService.saveAccounts(customers);
         fileService.saveTransactions(customers);
     }
 
     public void executeWithdraw(String accountId, double amount) {
         Account account = findAccountByAccountId(accountId);
-        account.withdraw(amount);
+        String transactionId =  idService.generateTransactionId();
+        account.withdraw(transactionId,amount);
         fileService.saveAccounts(customers);
         fileService.saveTransactions(customers);
     }
@@ -281,7 +283,8 @@ public class CustomerService {
     public void executeTransfer(String fromAccountId, String toAccountId, double amount) {
         Account fromAccount = findAccountByAccountId(fromAccountId);
         Account toAccount = findAccountByAccountId(toAccountId);
-        fromAccount.transfer(toAccount, amount);
+        String transactionId =  idService.generateTransactionId();
+        fromAccount.transfer(transactionId, toAccount, amount);
         fileService.saveAccounts(customers);
         fileService.saveTransactions(customers);
     }

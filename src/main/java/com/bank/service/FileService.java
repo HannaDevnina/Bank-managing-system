@@ -22,7 +22,7 @@ public class FileService {
 
     public void saveBank(Bank bank) {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(BANK_FILE))) {
-           bufferedWriter.write(String.format("%s,%s,%s,%s,%s", bank.getBankId(), bank.getName(),
+           bufferedWriter.write(String.format("%s,%s,%s,%s", bank.getName(),
                    bank.getAddress(), bank.getPhone(), bank.getWebUrl()));
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -164,7 +164,7 @@ public class FileService {
            String line = bufferedReader.readLine();
            String[] parts = line.split(",");
            return new Bank(parts[0], parts[1],
-                   parts[2], parts[3], parts[4]);
+                   parts[2], parts[3]);
        } catch (FileNotFoundException e) {
            return null;
        } catch (IOException e) {
@@ -212,7 +212,7 @@ public class FileService {
                 if (parts[0].equals("IndividualCustomer")) {
                     IndividualCustomer individualCustomer = new IndividualCustomer(
                             parts[1], parts[2], parts[3], parts[4], parts[5],
-                            parts[6], parts[9], parts[10], MaritalStatus.valueOf(parts[11])
+                            parts[6], parts[10], parts[11], MaritalStatus.valueOf(parts[12])
                     );
                     individualCustomer.setRegistrationDate(parts[7]);
                     if (!parts[8].equals("null")) {
@@ -223,8 +223,8 @@ public class FileService {
                 } else if (parts[0].equals("BusinessCustomer")) {
                     BusinessCustomer businessCustomer = new BusinessCustomer(
                             parts[1], parts[2], parts[3], parts[4], parts[5],
-                            parts[6], parts[9], parts[10], BusinessType.valueOf(parts[11]),
-                            parts[12]
+                            parts[6], parts[10], parts[11], BusinessType.valueOf(parts[12]),
+                            parts[13]
                     );
                     businessCustomer.setRegistrationDate(parts[7]);
                     if (!parts[8].equals("null")) {
