@@ -66,7 +66,7 @@ public abstract class Customer extends Person {
                 "} " + super.toString();
     }
 
-    abstract String getCustomerInfo();
+    public abstract String getCustomerInfo();
 
     public Account findAccount(String accountId) {
         for (Account account: accounts) {
