@@ -7,8 +7,7 @@ public class Bank {
         private String phone;
         private String webUrl;
 
-    public Bank(String bankId, String name, String address, String phone, String webUrl) {
-        this.bankId = bankId;
+    public Bank(String name, String address, String phone, String webUrl) {
         setName(name);
         setAddress(address);
         setPhone(phone);
