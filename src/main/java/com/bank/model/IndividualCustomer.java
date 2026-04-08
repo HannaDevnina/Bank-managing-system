@@ -24,7 +24,7 @@ public class IndividualCustomer extends Customer{
         if (!ssn.matches("^(?!000|666|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0000)\\d{4}$")) {
             throw new IllegalArgumentException("Use valid SSN format!");
         }
-        this.ssn = ssn.replace("-", "");
+        this.ssn = ssn;
     }
 
     public String getOccupation() {

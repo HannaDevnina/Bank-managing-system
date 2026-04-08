@@ -10,12 +10,11 @@ private FileService fileService;
         this.fileService = fileService;
     }
 
-    public void setupBank(String bankId,
-                          String name,
+    public void setupBank(String name,
                           String address,
                           String phone,
                           String webUrl) {
-        this.bank = new Bank(bankId, name,
+        this.bank = new Bank(name,
                 address, phone, webUrl);
         fileService.saveBank(bank);
     }

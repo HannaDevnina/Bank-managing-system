@@ -12,7 +12,6 @@ import com.bank.model.BusinessCustomer;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Spliterator;
 
 public class FileService {
     private static final String BANK_FILE = "bank.txt";
@@ -23,7 +22,7 @@ public class FileService {
 
     public void saveBank(Bank bank) {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(BANK_FILE))) {
-           bufferedWriter.write(String.format("%s,%s,%s,%s,%s", bank.getBankId(), bank.getName(),
+           bufferedWriter.write(String.format("%s,%s,%s,%s", bank.getName(),
                    bank.getAddress(), bank.getPhone(), bank.getWebUrl()));
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -165,7 +164,7 @@ public class FileService {
            String line = bufferedReader.readLine();
            String[] parts = line.split(",");
            return new Bank(parts[0], parts[1],
-                   parts[2], parts[3], parts[4]);
+                   parts[2], parts[3]);
        } catch (FileNotFoundException e) {
            return null;
        } catch (IOException e) {
@@ -213,23 +212,25 @@ public class FileService {
                 if (parts[0].equals("IndividualCustomer")) {
                     IndividualCustomer individualCustomer = new IndividualCustomer(
                             parts[1], parts[2], parts[3], parts[4], parts[5],
-                            parts[6], parts[9], parts[10], MaritalStatus.valueOf(parts[11])
+                            parts[6], parts[10], parts[11], MaritalStatus.valueOf(parts[12])
                     );
                     individualCustomer.setRegistrationDate(parts[7]);
                     if (!parts[8].equals("null")) {
                         individualCustomer.setClosureDate(parts[8]);
                     }
+                    individualCustomer.setActive(Boolean.parseBoolean(parts[9]));
                     customers.add(individualCustomer);
                 } else if (parts[0].equals("BusinessCustomer")) {
                     BusinessCustomer businessCustomer = new BusinessCustomer(
                             parts[1], parts[2], parts[3], parts[4], parts[5],
-                            parts[6], parts[9], parts[10], BusinessType.valueOf(parts[11]),
-                            parts[12]
+                            parts[6], parts[10], parts[11], BusinessType.valueOf(parts[12]),
+                            parts[13]
                     );
                     businessCustomer.setRegistrationDate(parts[7]);
                     if (!parts[8].equals("null")) {
                         businessCustomer.setClosureDate(parts[8]);
                     }
+                    businessCustomer.setActive(Boolean.parseBoolean(parts[9]));
                     customers.add(businessCustomer);
                 }
             }
@@ -313,31 +314,31 @@ public class FileService {
         }
     }
 
-//    public void loadAll(
-//            BankService bankService,
-//            EmployeeService employeeService,
-//            CustomerService customerService) {
-//
-//
-//        Bank bank = readBank();
-//        if (bank != null) {
-//            bankService.setBank(bank);
-//        }
-//
-//
-//        List<Employee> employees = readEmployees();
-//        employeeService.setEmployees(employees);
-//
-//
-//        List<Customer> customers = readCustomers();
-//        customerService.setCustomers(customers);
-//
-//
-//        readAccounts(customers);
-//
-//
-//        readTransactions(customers);
-//    }
+    public void loadAll(
+            BankService bankService,
+            EmployeeService employeeService,
+            CustomerService customerService) {
+
+
+        Bank bank = readBank();
+        if (bank != null) {
+            bankService.setBank(bank);
+        }
+
+
+        List<Employee> employees = readEmployees();
+        employeeService.setEmployees(employees);
+
+
+        List<Customer> customers = readCustomers();
+        customerService.setCustomers(customers);
+
+
+        readAccounts(customers);
+
+
+        readTransactions(customers);
+    }
 }
 
 

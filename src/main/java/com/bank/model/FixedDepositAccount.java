@@ -105,7 +105,7 @@ public class FixedDepositAccount extends Account{
     }
 
     @Override
-    public void withdraw(double amount) {
+    public void withdraw(String transactionId, double amount) {
         if (!isMature()) {
             throw new RuntimeException(
                     "Account locked until: " + maturityDate);
@@ -118,7 +118,8 @@ public class FixedDepositAccount extends Account{
         }
 
         if (amount > getTransactionLimit()) {
-            throw new TransactionLimitExceededException("You exceeded transaction limit!");
+            throw new TransactionLimitExceededException("You exceeded transaction limit! " +
+                    "Transaction limit is " + getTransactionLimit());
         }
         if (getBalance() < amount) {
             throw new InsufficientFundsException("Insufficient funds. Available: " + getAvailableBalance());
@@ -126,7 +127,7 @@ public class FixedDepositAccount extends Account{
 
         setBalance(getBalance() - amount);
         Transaction transaction = new Transaction(
-                "TRX - TEMP",
+                transactionId,
                 amount,
                 getBalance(),
                 TransactionType.WITHDRAWAL,
@@ -137,7 +138,7 @@ public class FixedDepositAccount extends Account{
     }
 
     @Override
-    public void transfer(Account destination, double amount) {
+    public void transfer(String transactionId, Account destination, double amount) {
         if (!isMature()) {
             throw new RuntimeException(
                     "Account locked until: " + maturityDate);
@@ -167,7 +168,7 @@ public class FixedDepositAccount extends Account{
             destination.setBalance(destination.getBalance() + amount);
 
             Transaction transaction = new Transaction(
-                    "TRX - TEMP",
+                    transactionId,
                     amount,
                     getBalance(),
                     TransactionType.TRANSFER,
@@ -176,7 +177,7 @@ public class FixedDepositAccount extends Account{
             addTransaction(transaction);
 
             destination.addTransaction(new Transaction(
-                    "TRX-TEMP",
+                    transactionId,
                     amount,
                     destination.getBalance(),
                     TransactionType.TRANSFER,
