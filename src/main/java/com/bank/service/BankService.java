@@ -55,9 +55,12 @@ private FileService fileService;
     }
 
     public void showBank() {
-        System.out.println(bank);
+            if (bank == null) {
+                System.out.println(
+                        "No bank configured yet!");
+                return;
+            }
+            System.out.println(bank);
     }
-
-
 }
 
