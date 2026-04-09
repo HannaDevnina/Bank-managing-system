@@ -33,26 +33,50 @@ public class BankMenu {
                 case "2" :
                     System.out.print("Enter new bank name: ");
                     String name = scanner.nextLine().strip();
-                    bankService.updateName(name);
-                    bankService.showBank();
+                    try {
+                        bankService.updateName(name);
+                        System.out.println("Updated! ✅");
+                        bankService.showBank();
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Error: "
+                                + e.getMessage());
+                    }
                     break;
                 case "3" :
-                    System.out.print("Enter new bank name: ");
+                    System.out.print("Enter new bank address: ");
                     String address = scanner.nextLine().strip();
-                    bankService.updateAddress(address);
-                    bankService.showBank();
+                    try {
+                        bankService.updateAddress(address);
+                        System.out.println("Updated! ✅");
+                        bankService.showBank();
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Error: "
+                                + e.getMessage());
+                    }
                     break;
                 case "4" :
                     System.out.print("Enter new bank phone number: ");
                     String phone = scanner.nextLine().strip();
-                    bankService.updatePhone(phone);
-                    bankService.showBank();
+                    try {
+                        bankService.updatePhone(phone);
+                        System.out.println("Updated! ✅");
+                        bankService.showBank();
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Error: "
+                                + e.getMessage());
+                    }
                     break;
                 case "5" :
                     System.out.print("Enter new bank web URL: ");
                     String webUrl = scanner.nextLine().strip();
-                    bankService.updateWebUrl(webUrl);
-                    bankService.showBank();
+                    try {
+                        bankService.updateWebUrl(webUrl);
+                        System.out.println("Updated! ✅");
+                        bankService.showBank();
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Error: "
+                                + e.getMessage());
+                    }
                     break;
                 case "0" :
                     System.out.println("Returning to main menu...");
