@@ -36,20 +36,19 @@ public class MainMenu {
 
             String choice = scanner.nextLine();
 
-////            switch (choice) {
-////                case "1" -> new BankMenu(
-////                        bankService, scanner).show();
-////                case "2" -> new EmployeeMenu(
-////                        employeeService, scanner).show();
-////                case "3" -> new CustomerMenu(
-////                        customerService, scanner).show();
-////                case "0" -> {
-////                    System.out.println("Goodbye!");
-////                    return;
-////                }
+            switch (choice) {
+                case "1" -> new BankMenu(
+                        bankService, scanner).show();
+//                case "2" -> new EmployeeMenu(
+//                        employeeService, scanner).show();
+//                case "3" -> new CustomerMenu(
+//                        customerService, scanner).show();
+//                case "0" -> {
+//                    System.out.println("Goodbye!");
+//                    return;
+                }
 //                default -> System.out.println(
 //                        "Invalid choice!");
-//            }
+            }
         }
     }
-}
