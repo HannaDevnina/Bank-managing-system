@@ -28,21 +28,25 @@ private FileService fileService;
     }
 
     public void updateName(String name) {
+        checkBankExists();
         bank.setName(name);
         fileService.saveBank(bank);
     }
 
     public void updateAddress(String address) {
+        checkBankExists();
         bank.setAddress(address);
         fileService.saveBank(bank);
     }
 
     public void updatePhone(String phone) {
+        checkBankExists();
         bank.setPhone(phone);
         fileService.saveBank(bank);
     }
 
     public void updateWebUrl(String webUrl) {
+        checkBankExists();
         bank.setWebUrl(webUrl);
         fileService.saveBank(bank);
     }
@@ -61,6 +65,13 @@ private FileService fileService;
                 return;
             }
             System.out.println(bank);
+    }
+
+    private void checkBankExists() {
+        if (bank == null) {
+            throw new IllegalStateException(
+                    "No bank configured yet!");
+        }
     }
 }
 
