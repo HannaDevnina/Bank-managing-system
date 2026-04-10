@@ -37,7 +37,7 @@ public class BankMenu {
                         bankService.updateName(name);
                         System.out.println("Updated! ✅");
                         bankService.showBank();
-                    } catch (IllegalArgumentException e) {
+                    } catch (IllegalArgumentException | IllegalStateException e) {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
@@ -49,7 +49,7 @@ public class BankMenu {
                         bankService.updateAddress(address);
                         System.out.println("Updated! ✅");
                         bankService.showBank();
-                    } catch (IllegalArgumentException e) {
+                    } catch (IllegalArgumentException | IllegalStateException e) {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
@@ -61,7 +61,7 @@ public class BankMenu {
                         bankService.updatePhone(phone);
                         System.out.println("Updated! ✅");
                         bankService.showBank();
-                    } catch (IllegalArgumentException e) {
+                    } catch (IllegalArgumentException | IllegalStateException e) {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
@@ -73,7 +73,7 @@ public class BankMenu {
                         bankService.updateWebUrl(webUrl);
                         System.out.println("Updated! ✅");
                         bankService.showBank();
-                    } catch (IllegalArgumentException e) {
+                    } catch (IllegalArgumentException | IllegalStateException e) {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
@@ -87,4 +87,6 @@ public class BankMenu {
             }
         }
     }
+
+
 }
