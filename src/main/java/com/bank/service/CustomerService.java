@@ -211,10 +211,10 @@ public class CustomerService {
         System.out.println(customer.getCustomerInfo());
     }
 
-    public void closeAccount(String customerId, String accountId) {
-        Customer customer = findCustomerById(customerId);
-        Account account = customer.findAccount(accountId);
+    public void closeAccount(String accountId) {
+        Account account = findAccountByAccountId(accountId);
         account.closeAccount();
+        fileService.saveAccounts(customers);
     }
 
     public Account findAccountByAccountId(String accountId) {
@@ -297,7 +297,10 @@ public class CustomerService {
         this.customers = fileService.readCustomers();
     }
 
-
+    public void showAllCustomerAccounts(String customerId) {
+        Customer customer = findCustomerById(customerId);
+        customer.showAccounts();
+        }
 }
 
 
