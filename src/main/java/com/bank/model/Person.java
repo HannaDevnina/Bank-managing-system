@@ -49,7 +49,7 @@ public abstract class Person {
 
     public void setBirthDate(String birthDate) {
         if(!birthDate.matches(  "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$")) {
-            throw new IllegalArgumentException("Date should be in ISO-8601 format");
+            throw new IllegalArgumentException("Date should be in YYYY-MM-DD format");
         }
         String[] dobArray = birthDate.split("-"); // create array of strings to pass them in to LocalDate
         LocalDate dob = LocalDate.of(Integer.parseInt(dobArray[0]),

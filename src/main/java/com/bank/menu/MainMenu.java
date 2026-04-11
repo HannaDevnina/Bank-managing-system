@@ -32,23 +32,27 @@ public class MainMenu {
             System.out.println("2. Employees");
             System.out.println("3. Customers");
             System.out.println("0. Exit");
+            System.out.println("=".repeat(30));
             System.out.print("Choose: ");
+
+
 
             String choice = scanner.nextLine();
 
             switch (choice) {
                 case "1" -> new BankMenu(
                         bankService, scanner).show();
-//                case "2" -> new EmployeeMenu(
-//                        employeeService, scanner).show();
-//                case "3" -> new CustomerMenu(
-//                        customerService, scanner).show();
-//                case "0" -> {
-//                    System.out.println("Goodbye!");
-//                    return;
+                case "2" -> new EmployeeMenu(
+                        employeeService, scanner).show();
+                case "3" -> new CustomerMenu(
+                        customerService, scanner).show();
+                case "0" -> {
+                    System.out.println("Goodbye!");
+                    return;
                 }
-//                default -> System.out.println(
-//                        "Invalid choice!");
+                default -> System.out.println(
+                        "Invalid choice!");
             }
         }
     }
+}

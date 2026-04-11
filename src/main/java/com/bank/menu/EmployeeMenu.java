@@ -18,7 +18,7 @@ public class EmployeeMenu {
         while (true) {
             System.out.println("\n" + "=".repeat(30));
             System.out.println("  EMPLOYEE MENU");
-            System.out.println("\n" + "=".repeat(30));
+            System.out.println("=".repeat(30));
             System.out.println("1. Add Full Time Employee");
             System.out.println("2. Add Contractor");
             System.out.println("3. Show All Employees");
@@ -34,8 +34,11 @@ public class EmployeeMenu {
             System.out.println("13. Calculate Salary" );
             System.out.println("14. Deactivate Employee" );
             System.out.println("0. Back to Main Menu");
+            System.out.println("=".repeat(30));
             System.out.print("Choose: ");
+
             String choice = scanner.nextLine();
+            System.out.println();
 
             switch (choice) {
                 case "1" :
@@ -46,17 +49,18 @@ public class EmployeeMenu {
                        String lastName = scanner.nextLine().strip();
                        System.out.print("Enter Date Of Birth: ");
                        String birthDate = scanner.nextLine().strip();
-                       System.out.println("Enter Email: ");
+                       System.out.print("Enter Email: ");
                        String email = scanner.nextLine().strip();
                        System.out.print("Enter Phone Number: ");
                        String phone = scanner.nextLine().strip();
-                       System.out.println("Enter position: ");
+                       System.out.print("Enter position: ");
                        String position = scanner.nextLine().strip();
                        System.out.print("Enter salary: ");
                        double salary = scanner.nextDouble();
                        scanner.nextLine();
                        employeeService.addFullTimeEmployee(firstName, lastName, birthDate, email, phone,
                                position, salary);
+                       System.out.println("=".repeat(30));
                        System.out.println("New Full Time Employee Created Successfully!");
                        employeeService.showEmployeeByFullName(firstName, lastName);
                    } catch (IllegalArgumentException e) {
@@ -70,13 +74,13 @@ public class EmployeeMenu {
                        String firstName = scanner.nextLine().strip();
                        System.out.print("Enter Last Name: ");
                        String lastName = scanner.nextLine().strip();
-                       System.out.print("Enter Date Of Birth: ");
+                       System.out.print("Enter Date Of Birth (YYYY-MM-DD): ");
                        String birthDate = scanner.nextLine().strip();
-                       System.out.println("Enter Email: ");
+                       System.out.print("Enter Email: ");
                        String email = scanner.nextLine().strip();
                        System.out.print("Enter Phone Number: ");
                        String phone = scanner.nextLine().strip();
-                       System.out.println("Enter position: ");
+                       System.out.print("Enter position: ");
                        String position = scanner.nextLine().strip();
                        System.out.print("Enter Hourly Rate: ");
                        double hourlyRate = scanner.nextDouble();
