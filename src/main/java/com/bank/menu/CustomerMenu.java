@@ -55,10 +55,10 @@ public class CustomerMenu {
                         System.out.print("Enter Customer SSN: ");
                         String ssn = scanner.nextLine().strip();
                         System.out.print("Enter Customer Occupation: ");
-                        String occupation = scanner.nextLine();
-                        System.out.print("Enter Marital Status");
-                        MaritalStatus maritalStatus = MaritalStatus.valueOf(scanner.nextLine());
-                        customerService.addIndividualCustomer(firstName, firstName, birthDate, email,
+                        String occupation = scanner.nextLine().strip();
+                        System.out.print("Enter Marital Status: ");
+                        MaritalStatus maritalStatus = MaritalStatus.valueOf(scanner.nextLine().strip());
+                        customerService.addIndividualCustomer(firstName, lastName, birthDate, email,
                                 phone, ssn, occupation, maritalStatus);
                         System.out.println("Individual Customer Created Successfully!");
                         customerService.showCustomerByFullName(firstName, lastName);
@@ -80,11 +80,11 @@ public class CustomerMenu {
                         System.out.print("Enter Phone Number: ");
                         String phone = scanner.nextLine().strip();
                         System.out.print("Enter Company Name: ");
-                        String companyName = scanner.nextLine();
+                        String companyName = scanner.nextLine().strip();
                         System.out.print("Enter Tax ID: ");
                         String taxId = scanner.nextLine().strip();
                         System.out.print("Enter Business Type: ");
-                        BusinessType businessType = BusinessType.valueOf(scanner.nextLine().strip());
+                        BusinessType businessType = BusinessType.valueOf(scanner.nextLine().strip().toUpperCase());
                         System.out.print("Enter Contact Person: ");
                         String contactPerson = scanner.nextLine().strip();
                         customerService.addBusinessCustomer(firstName, lastName, birthDate, email,
@@ -112,7 +112,7 @@ public class CustomerMenu {
                     try {
                         System.out.print("Enter Customer First Name: ");
                         String customerFirstName = scanner.nextLine().strip();
-                        System.out.println("Enter Customer Last Name: ");
+                        System.out.print("Enter Customer Last Name: ");
                         String customerLastName = scanner.nextLine().strip();
                         customerService.showCustomerByFullName(customerFirstName, customerLastName);
                     } catch (CustomerNotFoundException e) {
@@ -126,7 +126,7 @@ public class CustomerMenu {
                         System.out.print("Enter Customer New First Name: ");
                         String newName = scanner.nextLine().strip();
                         customerService.updateCustomerFirstName(customerId, newName);
-                        System.out.println("Employee First Name Updated Successfully!");
+                        System.out.println("Customer First Name Updated Successfully!");
                         customerService.showCustomer(customerId);
                     } catch (IllegalArgumentException | CustomerNotFoundException e) {
                         System.out.println("Error: "
@@ -135,12 +135,12 @@ public class CustomerMenu {
                     break;
                 case "7" :
                     try {
-                        System.out.print("Enter Employee Id: ");
+                        System.out.print("Enter Customer Id: ");
                         String customerId = scanner.nextLine().strip();
-                        System.out.print("Enter Employee New Last Name: ");
+                        System.out.print("Enter Customer New Last Name: ");
                         String newLastName = scanner.nextLine().strip();
                         customerService.updateCustomerLastName(customerId, newLastName);
-                        System.out.println("Employee Last Name Updated Successfully!");
+                        System.out.println("Customer Last Name Updated Successfully!");
                         customerService.showCustomer(customerId);
                     } catch (IllegalArgumentException | CustomerNotFoundException e) {
                         System.out.println("Error: "
@@ -151,7 +151,7 @@ public class CustomerMenu {
                     try {
                         System.out.print("Enter Customer Id: ");
                         String customerId = scanner.nextLine().strip();
-                        System.out.println("Enter Customer New Email: ");
+                        System.out.print("Enter Customer New Email: ");
                         String newEmail = scanner.nextLine().strip();
                         customerService.updateEmail(customerId, newEmail);
                         System.out.println("Customer Email Updated Successfully!");
@@ -200,9 +200,10 @@ public class CustomerMenu {
                 case "12" : {
                     AccountMenu accountMenu = new AccountMenu(customerService, scanner);
                     accountMenu.show();
+                    break;
                 }
                 case "0" : {
-                    System.out.println("Returning to main menu...");
+                    System.out.println("Returning to Main Menu...");
                     return;
                 }
                 default : {
@@ -211,5 +212,4 @@ public class CustomerMenu {
             }
         }
     }
-
 }
