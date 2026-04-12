@@ -16,11 +16,12 @@ public class BankMenu {
             System.out.println("\n" + "=".repeat(30));
             System.out.println("  BANK MENU");
             System.out.println("=".repeat(30));
-            System.out.println("1. Show Bank Details");
-            System.out.println("2. Update Bank Name");
-            System.out.println("3. Update Bank Address");
-            System.out.println("4. Update Bank Phone");
-            System.out.println("5. Update Bank Web URL" );
+            System.out.println("1. Set Up Bank");
+            System.out.println("2. Show Bank Details");
+            System.out.println("3. Update Bank Name");
+            System.out.println("4. Update Bank Address");
+            System.out.println("5. Update Bank Phone");
+            System.out.println("6. Update Bank Web URL" );
             System.out.println("0. Back to Main Menu");
             System.out.print("Choose: ");
 
@@ -28,26 +29,31 @@ public class BankMenu {
 
             switch (choice) {
                 case "1" :
+                    try {
+                        System.out.print("Enter Bank Name: ");
+                        String name = scanner.nextLine().strip();
+                        System.out.print("Enter Bank Address: ");
+                        String address = scanner.nextLine().strip();
+                        System.out.print("Enter Bank Phone Number: ");
+                        String phone = scanner.nextLine().strip();
+                        System.out.print("Enter Bank Web Url: ");
+                        String webUrl = scanner.nextLine().strip();
+                        bankService.setupBank(name, address, phone, webUrl);
+                        System.out.println("Bank Created Successfully!");
+                        bankService.showBank();
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Error: " + e.getMessage());
+                        }
+                        break;
+                case "2" :
                     bankService.showBank();
                     break;
-                case "2" :
-                    System.out.print("Enter new bank name: ");
-                    String name = scanner.nextLine().strip();
-                    try {
-                        bankService.updateName(name);
-                        System.out.println("Updated! ✅");
-                        bankService.showBank();
-                    } catch (IllegalArgumentException | IllegalStateException e) {
-                        System.out.println("Error: "
-                                + e.getMessage());
-                    }
-                    break;
                 case "3" :
-                    System.out.print("Enter new bank address: ");
-                    String address = scanner.nextLine().strip();
                     try {
-                        bankService.updateAddress(address);
-                        System.out.println("Updated! ✅");
+                        System.out.print("Enter new bank name: ");
+                        String name = scanner.nextLine().strip();
+                        bankService.updateName(name);
+                        System.out.println("Updated!");
                         bankService.showBank();
                     } catch (IllegalArgumentException | IllegalStateException e) {
                         System.out.println("Error: "
@@ -55,11 +61,11 @@ public class BankMenu {
                     }
                     break;
                 case "4" :
-                    System.out.print("Enter new bank phone number: ");
-                    String phone = scanner.nextLine().strip();
+                    System.out.print("Enter new bank address: ");
+                    String address = scanner.nextLine().strip();
                     try {
-                        bankService.updatePhone(phone);
-                        System.out.println("Updated! ✅");
+                        bankService.updateAddress(address);
+                        System.out.println("Updated!");
                         bankService.showBank();
                     } catch (IllegalArgumentException | IllegalStateException e) {
                         System.out.println("Error: "
@@ -67,11 +73,23 @@ public class BankMenu {
                     }
                     break;
                 case "5" :
+                    System.out.print("Enter new bank phone number: ");
+                    String phone = scanner.nextLine().strip();
+                    try {
+                        bankService.updatePhone(phone);
+                        System.out.println("Updated!");
+                        bankService.showBank();
+                    } catch (IllegalArgumentException | IllegalStateException e) {
+                        System.out.println("Error: "
+                                + e.getMessage());
+                    }
+                    break;
+                case "6" :
                     System.out.print("Enter new bank web URL: ");
                     String webUrl = scanner.nextLine().strip();
                     try {
                         bankService.updateWebUrl(webUrl);
-                        System.out.println("Updated! ✅");
+                        System.out.println("Updated!");
                         bankService.showBank();
                     } catch (IllegalArgumentException | IllegalStateException e) {
                         System.out.println("Error: "

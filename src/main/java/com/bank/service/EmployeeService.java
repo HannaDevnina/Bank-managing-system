@@ -84,6 +84,7 @@ public class EmployeeService {
         if (found.isEmpty()) {
             throw new EmployeeNotFoundException("Employee not found");
         }
+        System.out.println(showHeader());
         found.forEach(System.out::println);
     }
 
@@ -118,11 +119,13 @@ public class EmployeeService {
     }
 
     public void showAllEmployees() {
+        System.out.println(showHeader());
         employees.forEach(System.out::println);
     }
 
     public void showEmployee(String employeeId) {
         Employee employee = findEmployeeById(employeeId);
+        System.out.println(showHeader());
         System.out.println(employee);
     }
 
@@ -155,7 +158,14 @@ public class EmployeeService {
     }
 
     public void loadEmployees() {
-       this.employees = fileService.readEmployees();
+        this.employees = fileService.readEmployees();
+    }
+
+    public String showHeader() {
+        return String.format("%-12s|%-20s|%-11s|%-20s|%-12s|%-15s|%-10s|%-6s|%-6s|%-11s|%-12s|%-11s|%-11s|%-6s",
+                "EmployeeID", "FullName", "DOB", "Email", "Phone", "Position", "Salary", "HRate",
+                "HW", "HireDate", "HasBenefit", "ConEndDate", "EndDate", "IsActive")
+                + "\n" + "_".repeat(180);
     }
 }
 
