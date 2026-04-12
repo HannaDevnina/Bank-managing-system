@@ -62,14 +62,17 @@ public class Bank {
     }
 
     public void setPhone(String phone) {
-        if (!phone.matches("^(\\+1[\\s-]?)?\\(?[2-9][0-9]{2}\\)?[\\s-]?" +
-                "[2-9][0-9]{2}[\\s-]?[0-9]{4}$")) {
-            throw new IllegalArgumentException("Provide valid phone format!");
+        String stripped =
+                phone.replaceAll("\\D", "");
+        if (!stripped.matches("^[2-9]\\d{9}$")) {
+            throw new IllegalArgumentException(
+                    "Provide valid US phone format!");
         }
-        this.phone = phone.replaceAll("\\D", "");
+        this.phone = stripped;
     }
 
     public String getWebUrl() {
+
         return webUrl;
     }
 
@@ -89,12 +92,10 @@ public class Bank {
 
     @Override
     public String toString() {
-        return "Bank{" +
-                "bankId='" + bankId + '\'' +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", webUrl='" + webUrl + '\'' +
-                '}';
+        return String.format("%-10s|%-20s|%-40s|%-20s|%-30s%n",
+                "bankId", "name", "address", "phone", "webUrl")
+                + "_".repeat(120) + "\n"
+                + String.format("%-10s|%-20s|%-40s|%-20s|%-30s",
+                bankId, name, address, phone, webUrl);
     }
 }
