@@ -61,6 +61,7 @@ public class EmployeeMenu {
                        employeeService.addFullTimeEmployee(firstName, lastName, birthDate, email, phone,
                                position, salary);
                        System.out.println("=".repeat(30));
+                       System.out.println();
                        System.out.println("New Full Time Employee Created Successfully!");
                        employeeService.showEmployeeByFullName(firstName, lastName);
                    } catch (IllegalArgumentException e) {
@@ -90,6 +91,7 @@ public class EmployeeMenu {
                        employeeService.addContractor(firstName, lastName, birthDate, email, phone,
                               position, hourlyRate, contractEndDate);
                        System.out.println("New Contractor Created Successfully!");
+                       System.out.println();
                        employeeService.showEmployeeByFullName(firstName, lastName);
                    } catch (IllegalArgumentException e) {
                        System.out.println("Error: "
