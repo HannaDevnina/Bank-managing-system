@@ -22,7 +22,7 @@ public class FileService {
 
     public void saveBank(Bank bank) {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(BANK_FILE))) {
-           bufferedWriter.write(String.format("%s,%s,%s,%s", bank.getName(),
+           bufferedWriter.write(String.format("%s|%s|%s|%s", bank.getName(),
                    bank.getAddress(), bank.getPhone(), bank.getWebUrl()));
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -162,7 +162,7 @@ public class FileService {
     public Bank readBank() {
        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(BANK_FILE))) {
            String line = bufferedReader.readLine();
-           String[] parts = line.split(",");
+           String[] parts = line.split("\\|");
            return new Bank(parts[0], parts[1],
                    parts[2], parts[3]);
        } catch (FileNotFoundException e) {
