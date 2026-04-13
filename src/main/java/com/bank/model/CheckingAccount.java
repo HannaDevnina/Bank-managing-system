@@ -44,10 +44,9 @@ public class CheckingAccount extends Account {
 
     @Override
     public String toString() {
-        return "CheckingAccount{" +
-                "overdraftLimit=" + overdraftLimit +
-                ", monthlyFee=" + monthlyFee +
-                "} " + super.toString();
+        return String.format("%-12s|%-12s|%-15s|%-10s|%-10s|%-10s|%-12s|%-12s|%-12s|%-12s|%-11s|%-11s|%-10s",
+                getAccountId(), getBalance(), getTransactionLimit(), " ", " ", getOverdraftLimit(),
+                getMonthlyFee(), " ", " ", " ", getOpenDate(), getClosureDate(), getStatus());
     }
 
     @Override
