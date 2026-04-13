@@ -9,17 +9,17 @@ import com.bank.service.CustomerService;
 
 import java.util.Scanner;
 
-public class AccountMenu {
+public class AccountMenu extends BaseMenu{
     private CustomerService customerService;
-    private Scanner scanner;
 
     public AccountMenu(CustomerService customerService, Scanner scanner) {
+        super(scanner);
         this.customerService = customerService;
-        this.scanner = scanner;
     }
 
     public void show() {
         while (true) {
+
             System.out.println("\n" + "=".repeat(30));
             System.out.println("  ACCOUNTS MENU");
             System.out.println("=".repeat(30));
@@ -37,11 +37,11 @@ public class AccountMenu {
             System.out.println("12. Withdraw Money");
             System.out.println("13. Transfer Money");
             System.out.println("0. Back to Customer Menu");
-
             System.out.println("=".repeat(30));
             System.out.print("Choose: ");
 
             String choice = scanner.nextLine().strip();
+            System.out.println();
 
             switch (choice) {
                 case "1":
@@ -67,6 +67,7 @@ public class AccountMenu {
                     } catch (IllegalArgumentException | CustomerNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                    pause();
                     break;
                 case "2":
                     try {
@@ -78,7 +79,7 @@ public class AccountMenu {
                         System.out.print("Enter Transaction Limit: ");
                         double transactionLimit = scanner.nextDouble();
                         scanner.nextLine();
-                        System.out.print("Enter Interest Limit: ");
+                        System.out.print("Enter Interest Rate: ");
                         double interestRate = scanner.nextDouble();
                         scanner.nextLine();
                         System.out.print("Enter Min Balance: ");
@@ -91,6 +92,7 @@ public class AccountMenu {
                     } catch (IllegalArgumentException | CustomerNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                    pause();
                     break;
                 case "3":
                     try {
@@ -121,6 +123,7 @@ public class AccountMenu {
                     } catch (IllegalArgumentException | CustomerNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                    pause();
                     break;
                 case "4":
                     try {
@@ -130,9 +133,11 @@ public class AccountMenu {
                     } catch (CustomerNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                    pause();
                     break;
                 case "5":
                     customerService.showAllAccounts();
+                    pause();
                     break;
                 case "6":
                     try {
@@ -144,6 +149,7 @@ public class AccountMenu {
                     } catch (AccountNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                    pause();
                     break;
                 case "7":
                     try {
@@ -155,6 +161,7 @@ public class AccountMenu {
                     } catch (AccountNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                    pause();
                     break;
                 case "8":
                     try {
@@ -168,6 +175,7 @@ public class AccountMenu {
                     } catch (AccountNotFoundException | IllegalArgumentException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                    pause();
                     break;
                 case "9":
                     try {
@@ -177,6 +185,7 @@ public class AccountMenu {
                     } catch (AccountNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                    pause();
                     break;
                 case "10":
                     try {
@@ -186,6 +195,7 @@ public class AccountMenu {
                     } catch (AccountNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                    pause();
                     break;
                 case "11":
                     try {
@@ -202,6 +212,7 @@ public class AccountMenu {
                              AccountClosedException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                    pause();
                     break;
                 case "12":
                     try {
@@ -218,6 +229,7 @@ public class AccountMenu {
                              AccountClosedException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                    pause();
                     break;
                 case "13":
                     try {
@@ -237,6 +249,7 @@ public class AccountMenu {
                              AccountClosedException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                    pause();
                     break;
                 case "0": {
                     System.out.println("Returning to Customer Menu...");
