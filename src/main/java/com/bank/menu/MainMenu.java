@@ -6,21 +6,20 @@ import com.bank.service.EmployeeService;
 
 import java.util.Scanner;
 
-public class MainMenu {
+public class MainMenu extends BaseMenu{
 
     private BankService bankService;
     private EmployeeService employeeService;
     private CustomerService customerService;
-    private Scanner scanner;
 
     public MainMenu(BankService bankService,
                     EmployeeService employeeService,
                     CustomerService customerService,
                     Scanner scanner) {
+        super(scanner);
         this.bankService = bankService;
         this.employeeService = employeeService;
         this.customerService = customerService;
-        this.scanner = scanner;
     }
 
     public void show() {
@@ -35,9 +34,8 @@ public class MainMenu {
             System.out.println("=".repeat(30));
             System.out.print("Choose: ");
 
-
-
             String choice = scanner.nextLine();
+            System.out.println();
 
             switch (choice) {
                 case "1" -> new BankMenu(
