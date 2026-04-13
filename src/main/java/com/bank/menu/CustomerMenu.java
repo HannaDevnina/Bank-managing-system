@@ -7,13 +7,12 @@ import com.bank.service.CustomerService;
 
 import java.util.Scanner;
 
-public class CustomerMenu {
+public class CustomerMenu extends BaseMenu{
     private CustomerService customerService;
-    private Scanner scanner;
 
     public CustomerMenu(CustomerService customerService, Scanner scanner) {
+        super(scanner);
         this.customerService = customerService;
-        this.scanner = scanner;
     }
 
     public void show() {
@@ -37,7 +36,8 @@ public class CustomerMenu {
             System.out.println("=".repeat(30));
             System.out.print("Choose: ");
 
-            String choice = scanner.nextLine().strip();
+            String choice = scanner.nextLine();
+            System.out.println();
 
             switch (choice) {
                 case "1" :
@@ -48,7 +48,7 @@ public class CustomerMenu {
                         String lastName = scanner.nextLine().strip();
                         System.out.print("Enter Date Of Birth: ");
                         String birthDate = scanner.nextLine().strip();
-                        System.out.println("Enter Email: ");
+                        System.out.print("Enter Email: ");
                         String email = scanner.nextLine().strip();
                         System.out.print("Enter Phone Number: ");
                         String phone = scanner.nextLine().strip();
@@ -56,16 +56,19 @@ public class CustomerMenu {
                         String ssn = scanner.nextLine().strip();
                         System.out.print("Enter Customer Occupation: ");
                         String occupation = scanner.nextLine().strip();
-                        System.out.print("Enter Marital Status: ");
-                        MaritalStatus maritalStatus = MaritalStatus.valueOf(scanner.nextLine().strip());
+                        System.out.print("Enter Marital Status (SINGLE/MARRIED/DIVORCED/WIDOWED): ");
+                        MaritalStatus maritalStatus = MaritalStatus.valueOf(scanner.nextLine().strip().toUpperCase());
                         customerService.addIndividualCustomer(firstName, lastName, birthDate, email,
                                 phone, ssn, occupation, maritalStatus);
+                        System.out.println();
                         System.out.println("Individual Customer Created Successfully!");
+                        System.out.println();
                         customerService.showCustomerByFullName(firstName, lastName);
                     } catch (IllegalArgumentException e) {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "2" :
                     try {
@@ -89,15 +92,19 @@ public class CustomerMenu {
                         String contactPerson = scanner.nextLine().strip();
                         customerService.addBusinessCustomer(firstName, lastName, birthDate, email,
                                 phone, companyName, taxId, businessType, contactPerson);
+                        System.out.println();
                         System.out.println("Business Customer Created Successfully!");
+                        System.out.println();
                         customerService.showCustomerByFullName(firstName, lastName);
                     } catch (IllegalArgumentException e) {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "3" :
                     customerService.showAllCustomers();
+                    pause();
                     break;
                 case "4" :
                     try {
@@ -107,6 +114,7 @@ public class CustomerMenu {
                     } catch (CustomerNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                    pause();
                     break;
                 case "5" :
                     try {
@@ -118,6 +126,7 @@ public class CustomerMenu {
                     } catch (CustomerNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                    pause();
                     break;
                 case "6" :
                     try {
@@ -126,12 +135,15 @@ public class CustomerMenu {
                         System.out.print("Enter Customer New First Name: ");
                         String newName = scanner.nextLine().strip();
                         customerService.updateCustomerFirstName(customerId, newName);
+                        System.out.println();
                         System.out.println("Customer First Name Updated Successfully!");
+                        System.out.println();
                         customerService.showCustomer(customerId);
                     } catch (IllegalArgumentException | CustomerNotFoundException e) {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "7" :
                     try {
@@ -140,12 +152,15 @@ public class CustomerMenu {
                         System.out.print("Enter Customer New Last Name: ");
                         String newLastName = scanner.nextLine().strip();
                         customerService.updateCustomerLastName(customerId, newLastName);
+                        System.out.println();
                         System.out.println("Customer Last Name Updated Successfully!");
+                        System.out.println();
                         customerService.showCustomer(customerId);
                     } catch (IllegalArgumentException | CustomerNotFoundException e) {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "8" :
                     try {
@@ -154,12 +169,15 @@ public class CustomerMenu {
                         System.out.print("Enter Customer New Email: ");
                         String newEmail = scanner.nextLine().strip();
                         customerService.updateEmail(customerId, newEmail);
+                        System.out.println();
                         System.out.println("Customer Email Updated Successfully!");
+                        System.out.println();
                         customerService.showCustomer(customerId);
                     } catch (IllegalArgumentException | CustomerNotFoundException e) {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "9" :
                     try {
@@ -168,24 +186,30 @@ public class CustomerMenu {
                         System.out.print("Enter Customer New Phone Number: ");
                         String newPhone = scanner.nextLine().strip();
                         customerService.updatePhone(customerId, newPhone);
+                        System.out.println();
                         System.out.println("Customer Phone Number Updated Successfully!");
+                        System.out.println();
                         customerService.showCustomer(customerId);
                     } catch (IllegalArgumentException | CustomerNotFoundException e) {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "10" :
                     try {
                         System.out.print("Enter Customer Id: ");
                         String customerId = scanner.nextLine().strip();
                         customerService.deactivateCustomer(customerId);
+                        System.out.println();
                         System.out.println("Customer Deactivated Successfully!");
+                        System.out.println();
                         customerService.showCustomer(customerId);
                     } catch (CustomerNotFoundException e) {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "11" :
                     try {
@@ -196,10 +220,12 @@ public class CustomerMenu {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "12" : {
                     AccountMenu accountMenu = new AccountMenu(customerService, scanner);
                     accountMenu.show();
+                    pause();
                     break;
                 }
                 case "0" : {
