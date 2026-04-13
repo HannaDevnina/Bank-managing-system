@@ -16,7 +16,7 @@ public class AccountTest {
     }
 
     @Test
-    void shouldThrowWhenBalanceIsNegative() {
+    void shouldThrowIllegalArgumentExceptionWhenCreateAccountWithNegativeBalance() {
         assertThrows(IllegalArgumentException.class,
                 () -> new SavingsAccount("ACC-001", -1000.0,
                         500.0, 0.05, 100.0));
@@ -30,14 +30,14 @@ public class AccountTest {
     }
 
     @Test
-    void shouldThrowWhenTransactionLimitIsNegative() {
+    void shouldThrowIllegalArgumentExceptionWhenCreateAccountWithNegativeTransactionLimit() {
         assertThrows(IllegalArgumentException.class,
                 () -> new SavingsAccount("ACC-001", 0.0,
                         -500.0, 0.05, 100.0));
     }
 
     @Test
-    void shouldThrowWhenTransactionLimitIsZero() {
+    void shouldThrowIllegalArgumentExceptionWhenCreateAccountWithZeroTransactionLimit() {
         assertThrows(IllegalArgumentException.class,
                 () -> new SavingsAccount("ACC-001", 0.0,
                         0.0, 0.05, 100.0));
@@ -50,19 +50,19 @@ public class AccountTest {
     }
 
     @Test
-    void shouldThrowWhenDepositIsNegative() {
+    void shouldThrowIllegalArgumentExceptionWhenDepositNegative() {
         assertThrows(IllegalArgumentException.class,
                 () -> account.deposit("TRX-001", -300));
     }
 
     @Test
-    void shouldThrowWhenDepositZero() {
+    void shouldThrowIllegalArgumentExceptionWhenDepositZero() {
         assertThrows(IllegalArgumentException.class,
                 () -> account.deposit("TRX-001", 0.0));
     }
 
     @Test
-    void shouldThrowWhenDepositToClosedAccount() {
+    void shouldThrowAccountClosedExceptionWhenDepositToClosedAccount() {
         account.setStatus(AccountStatus.CLOSED);
         assertThrows(AccountClosedException.class,
                 () -> account.deposit("TRX-001", 500.0));

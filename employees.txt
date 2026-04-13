@@ -1,4 +1,0 @@
-FullTimeEmployee,Amy,Kelly,1990-04-23,amy@gmail.com,4567345231,EMP-000001,Menager,2026-04-11,null,4000.0
-Contractor,Eric,Maldon,2001-12-20,maldon@gmail.com,9767463524,EMP-000002,Janitor,2026-04-11,null,25.0,2026-12-31,0.0
-FullTimeEmployee,Maks,Devnin,1980-06-12,maks@gmail.com,7242354563,EMP-000004,CEO,2026-04-11,null,20000.0
-Contractor,Jone,Alexsander,1955-09-05,jalex@gmail.com,6342347645,EMP-000005,Menager,2026-04-11,null,55.0,2026-07-19,0.0
