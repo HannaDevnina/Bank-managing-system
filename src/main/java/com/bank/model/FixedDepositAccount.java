@@ -73,12 +73,10 @@ public class FixedDepositAccount extends Account{
 
     @Override
     public String toString() {
-        return "FixedDepositAccount{" +
-                "interestRate=" + interestRate +
-                ", lockPeriodMonths=" + lockPeriodMonths +
-                ", penaltyRate=" + penaltyRate +
-                ", maturityDate='" + maturityDate + '\'' +
-                "} " + super.toString();
+        return String.format("%-12s|%-12s|%-15s|%-10s|%-10s|%-10s|%-12s|%-12s|%-12s|%-12s|%-11s|%-11s|%-10s",
+                getAccountId(), getBalance(), getTransactionLimit(), getInterestRate(), " ", " ",
+                " ", getLockPeriodMonths(), getPenaltyRate(), getMaturityDate(), getOpenDate(),
+                getClosureDate(), getStatus());
     }
 
     @Override
