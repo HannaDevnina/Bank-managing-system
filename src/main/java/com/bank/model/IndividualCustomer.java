@@ -53,11 +53,9 @@ public class IndividualCustomer extends Customer{
 
     @Override
     public String toString() {
-        return "IndividualCustomer{" +
-                "SSN='" + ssn + '\'' +
-                ", occupation='" + occupation + '\'' +
-                ", maritalStatus=" + maritalStatus +
-                "} " + super.toString();
+        return String.format("%-12s|%-20s|%-11s|%-20s|%-12s|%-11s|%-13s|%-13s|%-12s|%-14s|%-20s|%-11s|%-6s ",
+                getCustomerId(), getFullName(), getBirthDate(), getEmail(), getPhone(), getRegistrationDate(),
+                getSsn(), " ", " ", " ", " ", getClosureDate(), isActive());
     }
 
     @Override
