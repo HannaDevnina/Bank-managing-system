@@ -87,12 +87,10 @@ public class BusinessCustomer extends Customer {
 
     @Override
     public String toString() {
-        return "BusinessCustomer{" +
-                "companyName='" + companyName + '\'' +
-                ", taxId='" + taxId + '\'' +
-                ", businessType=" + businessType +
-                ", contactPerson='" + contactPerson + '\'' +
-                "} " + super.toString();
+        return String.format("%-12s|%-20s|%-11s|%-20s|%-12s|%-11s|%-13s|%-13s|%-12s|%-14s|%-20s|%-11s|%-6s",
+                getCustomerId(), getFullName(), getBirthDate(), getEmail(), getPhone(), getRegistrationDate(),
+                " ", getCompanyName(), getTaxId(), getBusinessType(),
+                getContactPerson(), getClosureDate(), isActive());
     }
 
     @Override

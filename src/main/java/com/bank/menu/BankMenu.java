@@ -3,13 +3,12 @@ package com.bank.menu;
 import com.bank.service.BankService;
 import java.util.Scanner;
 
-public class BankMenu {
+public class BankMenu extends BaseMenu{
    private BankService bankService;
-   private Scanner scanner;
 
     public BankMenu(BankService bankService, Scanner scanner) {
+        super(scanner);
         this.bankService = bankService;
-        this.scanner = scanner;
     }
     public void show() {
         while (true) {
@@ -26,6 +25,7 @@ public class BankMenu {
             System.out.print("Choose: ");
 
             String choice = scanner.nextLine();
+            System.out.println();
 
             switch (choice) {
                 case "1" :
@@ -44,9 +44,12 @@ public class BankMenu {
                         } catch (IllegalArgumentException e) {
                             System.out.println("Error: " + e.getMessage());
                         }
+                        pause();
                         break;
+
                 case "2" :
                     bankService.showBank();
+                    pause();
                     break;
                 case "3" :
                     try {
@@ -59,6 +62,7 @@ public class BankMenu {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "4" :
                     System.out.print("Enter new bank address: ");
@@ -71,6 +75,7 @@ public class BankMenu {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "5" :
                     System.out.print("Enter new bank phone number: ");
@@ -83,6 +88,7 @@ public class BankMenu {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "6" :
                     System.out.print("Enter new bank web URL: ");
@@ -95,6 +101,7 @@ public class BankMenu {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "0" :
                     System.out.println("Returning to main menu...");

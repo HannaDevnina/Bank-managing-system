@@ -106,6 +106,7 @@ public class CustomerService {
             throw new CustomerNotFoundException(
                     "Customer not found");
         }
+        System.out.println(showHeader());
         found.forEach(System.out::println);
     }
 
@@ -192,10 +193,12 @@ public class CustomerService {
     }
 
     public void showAllCustomers() {
+        System.out.println(showHeader());
         customers.forEach(System.out::println);
     }
 
     public void showCustomer(String customerId) {
+        System.out.println(showHeader());
         Customer customer = findCustomerById(customerId);
         System.out.println(customer);
     }
@@ -229,10 +232,12 @@ public class CustomerService {
     }
 
     public void showAccountById(String accountId) {
+        System.out.println(showAccountHeader());
         System.out.println(findAccountByAccountId(accountId));
     }
 
     public void showAllAccounts() {
+        System.out.println(showAccountHeader());
         for (Customer customer : customers) {
             customer.getAccounts().forEach(System.out::println);
         }
@@ -260,6 +265,7 @@ public class CustomerService {
     }
 
     public void showAllAccountTransactions(String accountId) {
+        System.out.println(showTransactionHeader());
         Account account = findAccountByAccountId(accountId);
         account.getTransactions().forEach(System.out::println);
     }
@@ -299,9 +305,32 @@ public class CustomerService {
 
     public void showAllCustomerAccounts(String customerId) {
         Customer customer = findCustomerById(customerId);
+        System.out.println(showAccountHeader());
         customer.showAccounts();
         }
+
+    public String showHeader() {
+        return String.format("%-12s|%-20s|%-11s|%-20s|%-12s|%-11s|%-13s|%-13s|%-12s|%-14s|%-20s|%-11s|%-6s ",
+                "CustomerID", "FullName", "DOB", "Email", "Phone", "RegDate","SSN",
+                "ComName", "TaxID", "BusinessType", "ContactP", "EndDate", "IsActive") + "\n"
+                + "_".repeat(190);
+    }
+
+    public String showAccountHeader() {
+        return String.format("%-12s|%-12s|%-15s|%-10s|%-10s|%-10s|%-12s|%-12s|%-12s|%-12s|%-11s|%-11s|%-10s",
+                "AccountID", "Balance", "TransLimit", "IntRate", "MBalance", "ODLimit",
+                "MonthlyFee", "LockPeriod", "PenaltyRate", "MaturityDate", "OpenDate",
+                "ClosureDate", "Status") + "\n" + "_".repeat(170);
+    }
+
+    public String showTransactionHeader() {
+        return String.format("%-10s |%-12s|%-10s|%-15s|%-15s",
+                "TransferId", "DType", "Amount", "BalanceAfter", "DateTime")
+                + "\n" + "_".repeat(100);
+    }
+
 }
+
 
 
 

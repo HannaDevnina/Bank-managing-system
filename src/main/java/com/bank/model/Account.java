@@ -17,19 +17,23 @@ public abstract class Account {
     private List<Transaction> transactions = new ArrayList<>();
     private double transactionLimit;
 
+
+    protected Account(String accountId, double balance, double transactionLimit) {
+        this.accountId = accountId;
+        this.openDate = LocalDate.now().toString();
+        if (balance < 0) {
+            throw new IllegalArgumentException("Balance should be positive!");
+        }
+        this.balance = balance;
+        setTransactionLimit(transactionLimit);
+    }
+
     public void setOpenDate(String openDate) {
         this.openDate = openDate;
     }
 
-    public void setClosureDate(String closureDate) {
+    public void setClosureDate(String closureDate){
         this.closureDate = closureDate;
-    }
-
-    protected Account(String accountId, double balance, double transactionLimit) {
-        this.accountId = accountId; // then need to use Generator ID
-        this.openDate = LocalDate.now().toString();
-        setBalance(balance);
-        setTransactionLimit(transactionLimit);
     }
 
     public String getAccountId() {
@@ -43,7 +47,7 @@ public abstract class Account {
 
 
     public String getClosureDate() {
-        return closureDate;
+         return closureDate;
     }
 
     public void setClosureDate() {
@@ -54,11 +58,7 @@ public abstract class Account {
         return balance;
     }
 
-    //Do I need this method for setBalance it will be set once when we create it
     protected void setBalance(double balance) {
-        if (balance < 0) {
-            throw new IllegalArgumentException("Balance should be positive!");// make sense when it creates new account
-        }
         this.balance = balance;
     }
 
@@ -121,9 +121,7 @@ public abstract class Account {
         if (status != AccountStatus.ACTIVE) {
             throw new AccountClosedException("Account is not active!");
         }
-//        if (amount > transactionLimit) {
-//            throw new IllegalArgumentException("Amount exceeds transaction limit! Transaction limit is " + transactionLimit);
-//        } // it's not logically restrict how much I want to put money
+
         balance += amount;
 
         Transaction transaction = new Transaction(

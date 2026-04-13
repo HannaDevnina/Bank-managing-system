@@ -5,13 +5,11 @@ import com.bank.service.EmployeeService;
 
 import java.util.Scanner;
 
-public class EmployeeMenu {
+public class EmployeeMenu extends BaseMenu{
     private EmployeeService employeeService;
-    private Scanner scanner;
-
     public EmployeeMenu(EmployeeService employeeService, Scanner scanner) {
+        super(scanner);
         this.employeeService = employeeService;
-        this.scanner = scanner;
     }
 
     public void show() {
@@ -68,6 +66,7 @@ public class EmployeeMenu {
                        System.out.println("Error: "
                                + e.getMessage());
                    }
+                    pause();
                    break;
                 case "2" :
                    try {
@@ -97,9 +96,11 @@ public class EmployeeMenu {
                        System.out.println("Error: "
                                + e.getMessage());
                    }
+                    pause();
                     break;
                 case "3" :
                     employeeService.showAllEmployees();
+                    pause();
                     break;
                 case "4" :
                     try {
@@ -109,6 +110,7 @@ public class EmployeeMenu {
                     } catch (EmployeeNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                    pause();
                     break;
                 case "5" :
                     try {
@@ -121,6 +123,7 @@ public class EmployeeMenu {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "6" :
                     try {
@@ -135,6 +138,7 @@ public class EmployeeMenu {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "7" :
                     try {
@@ -149,6 +153,7 @@ public class EmployeeMenu {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "8" :
                     try {
@@ -163,6 +168,7 @@ public class EmployeeMenu {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "9" :
                     try {
@@ -177,6 +183,7 @@ public class EmployeeMenu {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "10" :
                     try {
@@ -191,6 +198,7 @@ public class EmployeeMenu {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "11" :
                     try {
@@ -205,6 +213,7 @@ public class EmployeeMenu {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "12" :
                     try {
@@ -217,6 +226,7 @@ public class EmployeeMenu {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "13" :
                     try {
@@ -228,6 +238,7 @@ public class EmployeeMenu {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "14" :
                     try {
@@ -240,6 +251,7 @@ public class EmployeeMenu {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
+                    pause();
                     break;
                 case "0" : {
                     System.out.println("Returning to main menu...");
