@@ -74,7 +74,7 @@ public class Transaction {
     @Override
     public String toString() {
         return String.format(
-                "%-10s | %-12s | %10.2f | %10.2f | %s",
+                "%-10s |%-12s|%-10s|%-15s|%-15s",
                 transactionId,
                 type,
                 amount,
