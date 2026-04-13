@@ -42,10 +42,9 @@ public class SavingsAccount extends Account{
 
     @Override
     public String toString() {
-        return "SavingsAccount{" +
-                "interestRate=" + interestRate +
-                ", minBalance=" + minBalance +
-                "} " + super.toString();
+        return String.format("%-12s|%-12s|%-15s|%-10s|%-10s|%-10s|%-12s|%-12s|%-12s|%-12s|%-11s|%-11s|%-10s",
+                getAccountId(), getBalance(), getTransactionLimit(), getInterestRate(), getMinBalance(), " ",
+                " ", " ", " ", " ", getOpenDate(), getClosureDate(), getStatus());
     }
 
     @Override
