@@ -45,7 +45,7 @@ public class EmployeeMenu extends BaseMenu{
                        String firstName = scanner.nextLine().strip();
                        System.out.print("Enter Last Name: ");
                        String lastName = scanner.nextLine().strip();
-                       System.out.print("Enter Date Of Birth: ");
+                       System.out.print("Enter Date Of Birth (YYYY-MM-DD): ");
                        String birthDate = scanner.nextLine().strip();
                        System.out.print("Enter Email: ");
                        String email = scanner.nextLine().strip();
@@ -133,6 +133,7 @@ public class EmployeeMenu extends BaseMenu{
                         String newName = scanner.nextLine().strip();
                         employeeService.updateEmployeeFirstName(employeeId, newName);
                         System.out.println("Employee First Name Updated Successfully!");
+                        System.out.println();
                         employeeService.showEmployee(employeeId);
                     } catch (IllegalArgumentException | EmployeeNotFoundException e) {
                         System.out.println("Error: "
@@ -148,6 +149,7 @@ public class EmployeeMenu extends BaseMenu{
                         String newLastName = scanner.nextLine().strip();
                         employeeService.updateEmployeeLastName(employeeId, newLastName);
                         System.out.println("Employee Last Name Updated Successfully!");
+                        System.out.println();
                         employeeService.showEmployee(employeeId);
                     } catch (IllegalArgumentException | EmployeeNotFoundException e) {
                         System.out.println("Error: "
@@ -163,6 +165,7 @@ public class EmployeeMenu extends BaseMenu{
                         String newEmail = scanner.nextLine().strip();
                         employeeService.updateEmail(employeeId, newEmail);
                         System.out.println("Employee  Email Updated Successfully!");
+                        System.out.println();
                         employeeService.showEmployee(employeeId);
                     } catch (IllegalArgumentException | EmployeeNotFoundException e) {
                         System.out.println("Error: "
@@ -178,6 +181,7 @@ public class EmployeeMenu extends BaseMenu{
                         String newPhone = scanner.nextLine().strip();
                         employeeService.updatePhone(employeeId, newPhone);
                         System.out.println("Employee Phone Number Updated Successfully!");
+                        System.out.println();
                         employeeService.showEmployee(employeeId);
                     } catch (IllegalArgumentException | EmployeeNotFoundException e) {
                         System.out.println("Error: "
@@ -193,6 +197,7 @@ public class EmployeeMenu extends BaseMenu{
                         String newBirthDate = scanner.nextLine().strip();
                         employeeService.updateBirthDate(employeeId, newBirthDate);
                         System.out.println("Employee Date Of Birth Updated Successfully!");
+                        System.out.println();
                         employeeService.showEmployee(employeeId);
                     } catch (IllegalArgumentException | EmployeeNotFoundException e) {
                         System.out.println("Error: "
@@ -208,6 +213,7 @@ public class EmployeeMenu extends BaseMenu{
                         String newPosition = scanner.nextLine().strip();
                         employeeService.promoteEmployee(employeeId, newPosition);
                         System.out.println("Employee Promoted Successfully!");
+                        System.out.println();
                         employeeService.showEmployee(employeeId);
                     } catch (IllegalArgumentException | EmployeeNotFoundException e) {
                         System.out.println("Error: "
@@ -221,6 +227,7 @@ public class EmployeeMenu extends BaseMenu{
                         String employeeId = scanner.nextLine().strip();
                         employeeService.fireEmployee(employeeId);
                         System.out.println("Employee Fired Successfully!");
+                        System.out.println();
                         employeeService.showEmployee(employeeId);
                     } catch (EmployeeNotFoundException e) {
                         System.out.println("Error: "
@@ -230,7 +237,7 @@ public class EmployeeMenu extends BaseMenu{
                     break;
                 case "13" :
                     try {
-                        System.out.print("Enter Employee Id: \n");
+                        System.out.print("Enter Employee Id: ");
                         String employeeId = scanner.nextLine().strip();
                         double salary = employeeService.calculateSalary(employeeId);
                         System.out.println("Salary: $" + salary);
@@ -246,6 +253,7 @@ public class EmployeeMenu extends BaseMenu{
                         String employeeId = scanner.nextLine().strip();
                         employeeService.deactivateEmployee(employeeId);
                         System.out.println("Employee Deactivated Successfully!");
+                        System.out.println();
                         employeeService.showEmployee(employeeId);
                     }  catch (EmployeeNotFoundException e) {
                         System.out.println("Error: "
