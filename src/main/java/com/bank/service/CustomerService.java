@@ -243,6 +243,17 @@ public class CustomerService {
         }
     }
 
+    public void showAllTransaction() {
+        System.out.println(showTransactionHeader());;
+        for(Customer customer : customers) {
+            for (Account account : customer.getAccounts()) {
+                for(Transaction transaction : account.getTransactions()) {
+                    System.out.println(transaction);
+                }
+            }
+        }
+    }
+
     public void freezeAccount(String accountId) {
         Account account = findAccountByAccountId(accountId);
         account.setStatus(AccountStatus.FROZEN);
@@ -310,7 +321,7 @@ public class CustomerService {
         }
 
     public String showHeader() {
-        return String.format("%-12s|%-20s|%-11s|%-20s|%-12s|%-11s|%-13s|%-13s|%-12s|%-14s|%-20s|%-11s|%-6s ",
+        return String.format("%-12s|%-20s|%-11s|%-25s|%-12s|%-11s|%-13s|%-20s|%-12s|%-14s|%-20s|%-11s|%-6s",
                 "CustomerID", "FullName", "DOB", "Email", "Phone", "RegDate","SSN",
                 "ComName", "TaxID", "BusinessType", "ContactP", "EndDate", "IsActive") + "\n"
                 + "_".repeat(190);
