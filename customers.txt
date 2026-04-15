@@ -10,3 +10,4 @@ BusinessCustomer,Amy,Karlson,2000-05-25,amy@brscompany.com,6673456213,CUS-000009
 BusinessCustomer,Robert,Chen,1975-04-18,robert.chen@techwave.com,7795556677,CUS-000010,2026-03-20,null,true,Techwave Solutions,33-7654321,CORPORATION,Robert Chen
 BusinessCustomer,Kelly,Muldun,1982-12-05,muldun@gmail.com,9458451234,CUS-000011,2026-04-01,null,false,Green Innovations,44-8765432,LLC,Maria Lopez
 BusinessCustomer,Daniel,Kim,1979-06-23,d.kim@kimenterprise.com,7795558899,CUS-000012,2026-04-05,null,true,Kim Enterprise,55-9876543,INCORPORATED,Daniel Kim
+IndividualCustomer,Garry,Truman,1956-01-20,gtruman@gmail.com,9678345623,CUS-000013,2026-04-15,null,true,345-45-5678,Doctor,SINGLE

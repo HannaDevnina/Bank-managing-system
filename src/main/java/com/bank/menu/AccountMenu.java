@@ -1,10 +1,7 @@
 package com.bank.menu;
 
 import com.bank.enums.AccountStatus;
-import com.bank.exceptions.AccountClosedException;
-import com.bank.exceptions.AccountNotFoundException;
-import com.bank.exceptions.CustomerNotFoundException;
-import com.bank.exceptions.InsufficientFundsException;
+import com.bank.exceptions.*;
 import com.bank.service.CustomerService;
 
 import java.util.Scanner;
@@ -223,7 +220,7 @@ public class AccountMenu extends BaseMenu{
                         customerService.showAccountById(accountId);
                     } catch (AccountNotFoundException |
                              InsufficientFundsException |
-                             AccountClosedException e) {
+                             AccountClosedException | IllegalArgumentException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
                     pause();
@@ -241,10 +238,11 @@ public class AccountMenu extends BaseMenu{
                         customerService.showAllAccountTransactions(accountId);
                         System.out.println();
                         customerService.showAccountById(accountId);
-
                     } catch (AccountNotFoundException |
                              InsufficientFundsException |
-                             AccountClosedException e) {
+                             AccountClosedException | IllegalArgumentException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    } catch (RuntimeException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
                     pause();
@@ -266,7 +264,10 @@ public class AccountMenu extends BaseMenu{
                         customerService.showAllAccountTransactions(toAccount);
                     } catch (AccountNotFoundException |
                              InsufficientFundsException |
-                             AccountClosedException e) {
+                             AccountClosedException | IllegalArgumentException
+                             | TransactionLimitExceededException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    } catch (RuntimeException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
                     pause();

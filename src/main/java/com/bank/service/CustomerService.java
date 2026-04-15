@@ -3,8 +3,7 @@ package com.bank.service;
 import com.bank.enums.AccountStatus;
 import com.bank.enums.BusinessType;
 import com.bank.enums.MaritalStatus;
-import com.bank.exceptions.AccountNotFoundException;
-import com.bank.exceptions.CustomerNotFoundException;
+import com.bank.exceptions.*;
 import com.bank.model.*;
 
 import java.util.ArrayList;
@@ -298,13 +297,14 @@ public class CustomerService {
     }
 
     public void executeTransfer(String fromAccountId, String toAccountId, double amount) {
-        Account fromAccount = findAccountByAccountId(fromAccountId);
-        Account toAccount = findAccountByAccountId(toAccountId);
-        String transactionId =  idService.generateTransactionId();
-        fromAccount.transfer(transactionId, toAccount, amount);
-        fileService.saveAccounts(customers);
-        fileService.saveTransactions(customers);
-    }
+            Account fromAccount = findAccountByAccountId(fromAccountId);
+            Account toAccount = findAccountByAccountId(toAccountId);
+            String transactionId = idService.generateTransactionId();
+            fromAccount.transfer(transactionId, toAccount, amount);
+            fileService.saveAccounts(customers);
+            fileService.saveTransactions(customers);
+        }
+
 
     public void saveCustomers() {
         fileService.saveCustomers(customers);

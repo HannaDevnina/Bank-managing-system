@@ -119,7 +119,7 @@ public class EmployeeMenu extends BaseMenu{
                         System.out.print("Enter Employee Last Name: ");
                         String lastName = scanner.nextLine().strip();
                         employeeService.showEmployeeByFullName(firstname, lastName);
-                    } catch (EmployeeNotFoundException e) {
+                    } catch (EmployeeNotFoundException | IllegalArgumentException e) {
                         System.out.println("Error: "
                                 + e.getMessage());
                     }
