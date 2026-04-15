@@ -1,0 +1,12 @@
+IndividualCustomer,Teilor,Swift,1995-05-13,swift@gmail.com,9456734523,CUS-000001,2026-04-13,null,true,123-45-6789,Singer,MARRIED
+BusinessCustomer,Larry,Gomes,1986-04-29,gomes@gmail.com,9845674598,CUS-000002,2026-04-14,null,true,BRS Company,12-3456789,CORPORATION,Larry Gomes
+IndividualCustomer,Hanna,Devnina,1990-05-15,hanna@gmail.com,7795553333,CUS-000003,2026-01-10,null,true,123-45-6789,Teacher,SINGLE
+IndividualCustomer,James,Parker,1985-08-22,james.parker@gmail.com,7795551122,CUS-000004,2026-01-15,null,true,234-56-7890,Engineer,MARRIED
+IndividualCustomer,Sofia,Hernandez,1992-03-11,sofia.h@gmail.com,7795552233,CUS-000005,2026-02-01,null,true,345-67-8901,Nurse,SINGLE
+IndividualCustomer,William,Thompson,1978-11-30,w.thompson@gmail.com,7795553344,CUS-000006,2026-02-14,null,true,456-78-9012,Accountant,MARRIED
+IndividualCustomer,Rachel,Green,1995-07-04,rachel.green@gmail.com,7795554455,CUS-000007,2026-03-01,null,true,567-89-0123,Designer,DIVORCED
+IndividualCustomer,Kevin,White,1988-09-19,kevin.white@gmail.com,7795555566,CUS-000008,2026-03-10,null,true,678-90-1234,Professor,WIDOWED
+BusinessCustomer,Amy,Karlson,2000-05-25,amy@brscompany.com,6673456213,CUS-000009,2026-03-15,null,true,Brs Company,22-6546321,LLC,Amy Karlson
+BusinessCustomer,Robert,Chen,1975-04-18,robert.chen@techwave.com,7795556677,CUS-000010,2026-03-20,null,true,Techwave Solutions,33-7654321,CORPORATION,Robert Chen
+BusinessCustomer,Kelly,Muldun,1982-12-05,muldun@gmail.com,9458451234,CUS-000011,2026-04-01,null,false,Green Innovations,44-8765432,LLC,Maria Lopez
+BusinessCustomer,Daniel,Kim,1979-06-23,d.kim@kimenterprise.com,7795558899,CUS-000012,2026-04-05,null,true,Kim Enterprise,55-9876543,INCORPORATED,Daniel Kim

@@ -46,13 +46,13 @@ public class CustomerMenu extends BaseMenu{
                         String firstName = scanner.nextLine().strip();
                         System.out.print("Enter Last Name: ");
                         String lastName = scanner.nextLine().strip();
-                        System.out.print("Enter Date Of Birth: ");
+                        System.out.print("Enter Date Of Birth (YYYY-MM-DD): ");
                         String birthDate = scanner.nextLine().strip();
                         System.out.print("Enter Email: ");
                         String email = scanner.nextLine().strip();
                         System.out.print("Enter Phone Number: ");
                         String phone = scanner.nextLine().strip();
-                        System.out.print("Enter Customer SSN: ");
+                        System.out.print("Enter Customer SSN (XXX-XX-XXXX): ");
                         String ssn = scanner.nextLine().strip();
                         System.out.print("Enter Customer Occupation: ");
                         String occupation = scanner.nextLine().strip();
@@ -84,7 +84,7 @@ public class CustomerMenu extends BaseMenu{
                         String phone = scanner.nextLine().strip();
                         System.out.print("Enter Company Name: ");
                         String companyName = scanner.nextLine().strip();
-                        System.out.print("Enter Tax ID: ");
+                        System.out.print("Enter Tax ID (XX-XXXXXXX): ");
                         String taxId = scanner.nextLine().strip();
                         System.out.print("Enter Business Type: ");
                         BusinessType businessType = BusinessType.valueOf(scanner.nextLine().strip().toUpperCase());
@@ -225,7 +225,6 @@ public class CustomerMenu extends BaseMenu{
                 case "12" : {
                     AccountMenu accountMenu = new AccountMenu(customerService, scanner);
                     accountMenu.show();
-                    pause();
                     break;
                 }
                 case "0" : {

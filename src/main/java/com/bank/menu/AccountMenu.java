@@ -33,9 +33,10 @@ public class AccountMenu extends BaseMenu{
             System.out.println("8. Change Account Status");
             System.out.println("9. Show Account Balance");
             System.out.println("10. Show Account Transactions");
-            System.out.println("11. Deposit Money");
-            System.out.println("12. Withdraw Money");
-            System.out.println("13. Transfer Money");
+            System.out.println("11. Show All Transactions");
+            System.out.println("12. Deposit Money");
+            System.out.println("13. Withdraw Money");
+            System.out.println("14. Transfer Money");
             System.out.println("0. Back to Customer Menu");
             System.out.println("=".repeat(30));
             System.out.print("Choose: ");
@@ -63,6 +64,7 @@ public class AccountMenu extends BaseMenu{
                         customerService.openCheckingAccount(customerId, balance,
                                 transactionLimit, overdraftLimit, monthlyFee);
                         System.out.println("Checking Account Created Successfully!");
+                        System.out.println();
                         customerService.showAllCustomerAccounts(customerId);
                     } catch (IllegalArgumentException | CustomerNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
@@ -88,6 +90,7 @@ public class AccountMenu extends BaseMenu{
                         customerService.openSavingsAccount(customerId, balance,
                                 transactionLimit, interestRate, minBalance);
                         System.out.println("Savings Account Created Successfully!");
+                        System.out.println();
                         customerService.showAllCustomerAccounts(customerId);
                     } catch (IllegalArgumentException | CustomerNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
@@ -104,7 +107,7 @@ public class AccountMenu extends BaseMenu{
                         System.out.print("Enter Transaction Limit: ");
                         double transactionLimit = scanner.nextDouble();
                         scanner.nextLine();
-                        System.out.print("Enter Interest Limit: ");
+                        System.out.print("Enter Interest Rate: ");
                         double interestRate = scanner.nextDouble();
                         scanner.nextLine();
                         System.out.print("Enter Lock Period (Months): ");
@@ -113,12 +116,13 @@ public class AccountMenu extends BaseMenu{
                         System.out.print("Enter Penalty Rate: ");
                         double penaltyRate = scanner.nextDouble();
                         scanner.nextLine();
-                        System.out.print("Enter Maturity Date: ");
+                        System.out.print("Enter Maturity Date (YYYY-MM-DD): ");
                         String maturityDate = scanner.nextLine().strip();
                         customerService.openFixedDepositAccount(customerId, balance,
                                 transactionLimit, interestRate, lockPeriodMonths,
                                 penaltyRate, maturityDate);
                         System.out.println("Fixed Deposit Account Created Successfully!");
+                        System.out.println();
                         customerService.showAllCustomerAccounts(customerId);
                     } catch (IllegalArgumentException | CustomerNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
@@ -145,6 +149,7 @@ public class AccountMenu extends BaseMenu{
                         String accountId = scanner.nextLine().strip();
                         customerService.closeAccount(accountId);
                         System.out.println("Account Closed Successfully!");
+                        System.out.println();
                         customerService.showAccountById(accountId);
                     } catch (AccountNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
@@ -157,6 +162,7 @@ public class AccountMenu extends BaseMenu{
                         String accountId = scanner.nextLine().strip();
                         customerService.freezeAccount(accountId);
                         System.out.println("Account Frozen Successfully!");
+                        System.out.println();
                         customerService.showAccountById(accountId);
                     } catch (AccountNotFoundException e) {
                         System.out.println("Error: " + e.getMessage());
@@ -171,6 +177,7 @@ public class AccountMenu extends BaseMenu{
                         AccountStatus status = AccountStatus.valueOf(scanner.nextLine().strip());
                         customerService.changeAccountStatus(accountId, status);
                         System.out.println("Account Status Changed Successfully!");
+                        System.out.println();
                         customerService.showAccountById(accountId);
                     } catch (AccountNotFoundException | IllegalArgumentException e) {
                         System.out.println("Error: " + e.getMessage());
@@ -197,21 +204,8 @@ public class AccountMenu extends BaseMenu{
                     }
                     pause();
                     break;
-                case "11":
-                    try {
-                        System.out.print("Enter Account ID: ");
-                        String accountId = scanner.nextLine().strip();
-                        System.out.print("Enter Amount: ");
-                        double amount = scanner.nextDouble();
-                        scanner.nextLine();
-                        customerService.executeDeposit(accountId, amount);
-                        System.out.println("Money Deposited Successfully!");
-                        customerService.showAccountById(accountId);
-                    } catch (AccountNotFoundException |
-                             InsufficientFundsException |
-                             AccountClosedException e) {
-                        System.out.println("Error: " + e.getMessage());
-                    }
+                case "11" :
+                    customerService.showAllTransaction();
                     pause();
                     break;
                 case "12":
@@ -221,8 +215,11 @@ public class AccountMenu extends BaseMenu{
                         System.out.print("Enter Amount: ");
                         double amount = scanner.nextDouble();
                         scanner.nextLine();
-                        customerService.executeWithdraw(accountId, amount);
-                        System.out.println("Money Withdraw Successfully!");
+                        customerService.executeDeposit(accountId, amount);
+                        System.out.println("Money Deposited Successfully!");
+                        System.out.println();
+                        customerService.showAllAccountTransactions(accountId);
+                        System.out.println();
                         customerService.showAccountById(accountId);
                     } catch (AccountNotFoundException |
                              InsufficientFundsException |
@@ -233,6 +230,27 @@ public class AccountMenu extends BaseMenu{
                     break;
                 case "13":
                     try {
+                        System.out.print("Enter Account ID: ");
+                        String accountId = scanner.nextLine().strip();
+                        System.out.print("Enter Amount: ");
+                        double amount = scanner.nextDouble();
+                        scanner.nextLine();
+                        customerService.executeWithdraw(accountId, amount);
+                        System.out.println("Money Withdraw Successfully!");
+                        System.out.println();
+                        customerService.showAllAccountTransactions(accountId);
+                        System.out.println();
+                        customerService.showAccountById(accountId);
+
+                    } catch (AccountNotFoundException |
+                             InsufficientFundsException |
+                             AccountClosedException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                    pause();
+                    break;
+                case "14":
+                    try {
                         System.out.print("Enter Account ID Sent From: ");
                         String fromAccount = scanner.nextLine().strip();
                         System.out.print("Enter Account ID Sent To: ");
@@ -242,8 +260,10 @@ public class AccountMenu extends BaseMenu{
                         scanner.nextLine();
                         customerService.executeTransfer(fromAccount, toAccount, amount);
                         System.out.println("Money Transfer Successfully!");
-                        customerService.showAccountById(fromAccount);
-                        customerService.showAccountById(toAccount);
+                        System.out.println();
+                        customerService.showAllAccountTransactions(fromAccount);
+                        System.out.println();
+                        customerService.showAllAccountTransactions(toAccount);
                     } catch (AccountNotFoundException |
                              InsufficientFundsException |
                              AccountClosedException e) {
@@ -257,6 +277,7 @@ public class AccountMenu extends BaseMenu{
                 }
                 default: {
                     System.out.println("Invalid choice!");
+                    break;
                 }
             }
         }

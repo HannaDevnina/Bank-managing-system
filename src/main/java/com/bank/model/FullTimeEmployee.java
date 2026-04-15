@@ -23,7 +23,7 @@ public class FullTimeEmployee extends Employee {
 
     @Override
     public String toString() {
-        return String.format("%-12s|%-20s|%-11s|%-20s|%-12s|%-15s|%-10s|%-6s|%-6s|%-11s|%-12s|%-11s|%-11s|%-6s",
+        return String.format("%-12s|%-20s|%-11s|%-26s|%-12s|%-20s|%-10s|%-6s|%-6s|%-11s|%-12s|%-11s|%-11s|%-6s",
                 getEmployeeId(), getFullName(), getBirthDate(), getEmail(), getPhone(), getPosition(),
                 getSalary(), " ", " ", getHireDate(), hasBenefits(), " ", getEndDate(), isActive());
     }
